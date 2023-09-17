@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3tenkt8vcyav"]
+
+[ext_resource type="PackedScene" uid="uid://cw8tetog14f3v" path="res://Prefabs/PlayerController.tscn" id="1_2s7og"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrngr"]
+size = Vector2(1246.88, 33.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtj6x"]
+size = Vector2(26.75, 679)
+
+[node name="Level" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_2s7og")]
+
+[node name="BoundaryLimits" type="StaticBody2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="BoundaryLimits"]
+position = Vector2(612, -15)
+shape = SubResource("RectangleShape2D_lrngr")
+
+[node name="Bottom" type="CollisionShape2D" parent="BoundaryLimits"]
+position = Vector2(592, 661)
+shape = SubResource("RectangleShape2D_lrngr")
+
+[node name="Right" type="CollisionShape2D" parent="BoundaryLimits"]
+position = Vector2(1162, 325)
+shape = SubResource("RectangleShape2D_vtj6x")
+
+[node name="Left" type="CollisionShape2D" parent="BoundaryLimits"]
+position = Vector2(-11.625, 334.5)
+shape = SubResource("RectangleShape2D_vtj6x")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
