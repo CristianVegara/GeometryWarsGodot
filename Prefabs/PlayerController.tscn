@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c6yawqmuniw5u" path="res://Sprites/Ship.png" id="2_7rvgm"]
 
 [node name="Player" type="RigidBody2D"]
+position = Vector2(550, 300)
 script = ExtResource("1_yfn53")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
