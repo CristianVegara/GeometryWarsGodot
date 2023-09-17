@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://cw8tetog14f3v" path="res://Prefabs/PlayerController.tscn" id="1_2s7og"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lrngr"]
-size = Vector2(1246.88, 33.75)
+size = Vector2(3040, 33.875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vtj6x"]
-size = Vector2(26.75, 679)
+size = Vector2(27.875, 2043)
 
 [node name="Level" type="Node"]
 
@@ -15,18 +15,42 @@ size = Vector2(26.75, 679)
 [node name="BoundaryLimits" type="StaticBody2D" parent="."]
 
 [node name="Top" type="CollisionShape2D" parent="BoundaryLimits"]
-position = Vector2(612, -15)
+position = Vector2(538, -725.062)
 shape = SubResource("RectangleShape2D_lrngr")
+
+[node name="ColorRect" type="ColorRect" parent="BoundaryLimits/Top"]
+offset_left = -1520.0
+offset_top = -17.0
+offset_right = 1520.0
+offset_bottom = 17.0
 
 [node name="Bottom" type="CollisionShape2D" parent="BoundaryLimits"]
-position = Vector2(592, 661)
+position = Vector2(538, 1284)
 shape = SubResource("RectangleShape2D_lrngr")
 
+[node name="ColorRect" type="ColorRect" parent="BoundaryLimits/Bottom"]
+offset_left = -1520.0
+offset_top = -17.0
+offset_right = 1520.0
+offset_bottom = 17.0
+
 [node name="Right" type="CollisionShape2D" parent="BoundaryLimits"]
-position = Vector2(1162, 325)
+position = Vector2(2071.94, 279.5)
 shape = SubResource("RectangleShape2D_vtj6x")
 
+[node name="ColorRect" type="ColorRect" parent="BoundaryLimits/Right"]
+offset_left = -14.0
+offset_top = -1021.0
+offset_right = 14.0
+offset_bottom = 1027.0
+
 [node name="Left" type="CollisionShape2D" parent="BoundaryLimits"]
-position = Vector2(-11.625, 334.5)
+position = Vector2(-996, 279.5)
 shape = SubResource("RectangleShape2D_vtj6x")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="ColorRect" type="ColorRect" parent="BoundaryLimits/Left"]
+offset_left = -14.0
+offset_top = -1021.0
+offset_right = 14.0
+offset_bottom = 1027.0
