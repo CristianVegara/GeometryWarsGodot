@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="GeometryWarsGodot"
-
 run/main_scene="res://Prefabs/PlayerController.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://Sprites/icon.svg"
@@ -24,7 +23,6 @@ project/assembly_name="GeometryWarsGodot"
 [physics]
 
 2d/default_gravity_vector=Vector2(0, 0)
-
 
 [rendering]
 

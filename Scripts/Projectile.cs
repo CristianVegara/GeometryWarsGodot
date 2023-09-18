@@ -24,7 +24,14 @@ public partial class Projectile : RigidBody2D
 		
 	}
 	
-	private void _on_body_entered()
+	// Destroy projectile on collision
+	void _on_body_entered()
+	{
+		QueueFree();
+	}
+
+	// Destroy projectile on timeout
+	void _on_timer_timeout()
 	{
 		QueueFree();
 	}
