@@ -11,10 +11,16 @@ config_version=5
 [application]
 
 config/name="GeometryWarsGodot"
-run/main_scene="res://Prefabs/PlayerController.tscn"
+run/main_scene="res://Scenes/GameLevel.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://Sprites/icon.svg"
 run/default_gravity_vector=Vector2(2.08165e-12, 1)
+
+[display]
+
+window/size/viewport_width=1270
+window/size/viewport_height=720
+window/stretch/aspect="keep_height"
 
 [dotnet]
 
