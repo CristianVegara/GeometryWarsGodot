@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfxe2aaigorpf"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="1_yfn53"]
+[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_rb7ic"]
 [ext_resource type="Texture2D" uid="uid://c6yawqmuniw5u" path="res://Sprites/Ship.png" id="2_7rvgm"]
 
 [node name="Player" type="RigidBody2D"]
 position = Vector2(550, 300)
-script = ExtResource("1_yfn53")
+script = ExtResource("1_rb7ic")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -24,13 +24,11 @@ position = Vector2(161, 0)
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
 wait_time = 0.1
-autostart = true
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
