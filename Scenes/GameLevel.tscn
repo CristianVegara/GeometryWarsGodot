@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3tenkt8vcyav"]
 
-[ext_resource type="PackedScene" uid="uid://cfxe2aaigorpf" path="res://Prefabs/Player.tscn" id="1_2s7og"]
 [ext_resource type="Texture2D" uid="uid://b5dtyquqcdeit" path="res://Sprites/icon.svg" id="1_oj88y"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_vxnds"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lrngr"]
 size = Vector2(3040, 33.875)
@@ -10,14 +10,13 @@ size = Vector2(3040, 33.875)
 size = Vector2(27.875, 2043)
 
 [node name="Level" type="Node"]
+script = ExtResource("1_vxnds")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.301961)
 position = Vector2(556, 278)
 scale = Vector2(15, 15)
 texture = ExtResource("1_oj88y")
-
-[node name="Player" parent="." instance=ExtResource("1_2s7og")]
 
 [node name="BoundaryLimits" type="StaticBody2D" parent="."]
 
@@ -61,3 +60,6 @@ offset_left = -14.0
 offset_top = -1021.0
 offset_right = 14.0
 offset_bottom = 1027.0
+
+[node name="PlayerSpawnTimer" type="Timer" parent="."]
+one_shot = true
