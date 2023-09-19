@@ -1,14 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://v5c11fmigwre"]
+[gd_scene load_steps=4 format=3 uid="uid://v5c11fmigwre"]
 
 [ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_w6527"]
 [ext_resource type="Texture2D" uid="uid://8e8eyi3h47hh" path="res://Sprites/Projectile.png" id="2_0m7eo"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_chlvh"]
+
 [node name="Projectile" type="RigidBody2D"]
 script = ExtResource("1_w6527")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(3.225, 0)
-polygon = PackedVector2Array(-3, -7, 16, 0, -3, 7, -14, 0)
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4.725, 0)
+scale = Vector2(1.465, 0.495)
+shape = SubResource("CapsuleShape2D_chlvh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3.225, 0)
@@ -18,5 +23,5 @@ texture = ExtResource("2_0m7eo")
 wait_time = 10.0
 autostart = true
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
