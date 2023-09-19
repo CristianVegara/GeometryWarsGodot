@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var targetDirection: Vector2
-var speed = 600
+var speed = 700
 
 func _ready():
 	# Get mouse position in screen and set it as the target
@@ -14,8 +14,11 @@ func _ready():
 	# Calculate the velocity by multiplying the direction vector by the speed
 	linear_velocity = direction * speed
 
+
 func _on_body_entered():
+	print('collision')
 	queue_free()
+
 
 func _on_timer_timeout():
 	queue_free()

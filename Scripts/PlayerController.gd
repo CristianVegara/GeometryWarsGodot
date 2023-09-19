@@ -1,28 +1,29 @@
 extends RigidBody2D
 
-const SPEED = 500.0
+const SPEED = 500
 var move = Vector2.ZERO
 var targetDirection: Vector2
 
-var projectileSpawnPoint: Vector2
+var projectile_spawn_point: Vector2
 var projectileScene: PackedScene
 
 
 func _ready():
 	projectileScene = preload("res://Prefabs/Projectile.tscn")
-	projectileSpawnPoint = $ProjectileSpawnPoint2.global_position
 
 
 func _process(delta):
+	# Rotate player
+	face_mouse_direction()
+	
+	# Input detection and movement
 	move = key_detection()
 	player_movement(move, delta)
-	face_mouse_direction()
 
 
 func key_detection():
 	move = Vector2.ZERO
-
-
+	
 	if Input.is_key_pressed(KEY_W):
 		move.y -= 1
 	if Input.is_key_pressed(KEY_S):
@@ -31,6 +32,7 @@ func key_detection():
 		move.x -= 1
 	if Input.is_key_pressed(KEY_D):
 		move.x += 1
+	
 	return move
 
 
@@ -44,11 +46,12 @@ func face_mouse_direction():
 
 
 func _on_timer_timeout():
-	print(projectileSpawnPoint)
-	var newInstance = projectileScene.instance()
-	get_parent().add_child(newInstance)
-	newInstance.global_position = projectileSpawnPoint
+	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		var newInstance = projectileScene.instantiate()
+		newInstance.global_position = $ProjectileSpawnPoint.global_position
+		get_parent().add_child(newInstance)
 
 
-func _on_body_entered(area):
+func _on_body_entered(_area):
+	print('player collided')
 	pass
