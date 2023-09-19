@@ -1,24 +1,25 @@
 extends RigidBody2D
 
-var targetDirection: Vector2
+var target_direction: Vector2
 var speed = 700
 
 func _ready():
-	# Get mouse position in screen and set it as the target
-	targetDirection = get_global_mouse_position()
-	look_at(targetDirection)
+	# Calculates the direction in which bullets will look at taking the opposite direction from spawn to center
+	var b_pos = $".."/Player/ProjectileSpawn/ProjectileSpawnPoint.global_position
+	var a_pos = $".."/Player/ProjectileSpawn.global_position
+	target_direction = Tools.vector_direction(a_pos, b_pos)
+	look_at(target_direction)
 
 	# Calculate the direction vector towards the target
-	var direction = (targetDirection - position).normalized()
+	var direction = (target_direction - position).normalized()
 
 	# Calculate the velocity by multiplying the direction vector by the speed
 	linear_velocity = direction * speed
 
 
-func _on_body_entered():
-	print('collision')
+func _on_timer_timeout():
 	queue_free()
 
 
-func _on_timer_timeout():
+func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	queue_free()
