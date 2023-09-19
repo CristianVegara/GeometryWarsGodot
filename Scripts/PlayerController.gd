@@ -67,4 +67,4 @@ func _on_timer_timeout():
 
 
 func _on_area_2d_body_entered(body):
-	print('Player collided with ', body.name)
+	print('Player collided with ', body.get_meta("Type"))
