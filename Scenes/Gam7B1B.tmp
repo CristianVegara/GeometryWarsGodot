@@ -19,7 +19,6 @@ scale = Vector2(15, 15)
 texture = ExtResource("1_oj88y")
 
 [node name="BoundaryLimits" type="StaticBody2D" parent="."]
-metadata/Type = "Barrier"
 
 [node name="Top" type="CollisionShape2D" parent="BoundaryLimits"]
 position = Vector2(538, -725.062)
@@ -65,5 +64,3 @@ offset_bottom = 1027.0
 [node name="PlayerSpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-
-[connection signal="timeout" from="PlayerSpawnTimer" to="." method="_on_player_spawn_timer_timeout"]

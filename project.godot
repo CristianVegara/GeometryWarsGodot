@@ -20,7 +20,8 @@ run/default_gravity_vector=Vector2(2.08165e-12, 1)
 
 window/size/viewport_width=1270
 window/size/viewport_height=720
-window/stretch/aspect="keep_height"
+window/stretch/aspect="expand"
+window/vsync/vsync_mode=2
 
 [dotnet]
 

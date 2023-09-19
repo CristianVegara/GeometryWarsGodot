@@ -17,9 +17,11 @@ func _ready():
 	linear_velocity = direction * speed
 
 
+# Despawns bullet after some time in case it hasn't collided with anything
 func _on_timer_timeout():
 	queue_free()
 
 
-func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+# Despawns bullet after it has collided with anything
+func _on_area_2d_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
 	queue_free()
