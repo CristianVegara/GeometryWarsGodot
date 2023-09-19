@@ -1,11 +1,10 @@
 extends RigidBody2D
 
-const SPEED = 10000
-var speed_multiplier = 4
+const SPEED = 45000
 var direction = Vector2.ZERO
 var previous_position: Vector2
 var projectile_scene: PackedScene
-
+var player_immunity: bool = true
 
 func _ready():
 	projectile_scene = preload("res://Prefabs/Projectile.tscn")
@@ -13,6 +12,8 @@ func _ready():
 
 
 func _process(delta):
+	if Input.is_key_pressed(KEY_1):
+		queue_free()
 	# Rotate player
 	shoot_in_mouse_direction()
 	
@@ -41,12 +42,12 @@ func key_detection():
 
 
 func player_movement(direction_direction, delta):
-	set_linear_velocity(direction_direction.normalized() * SPEED * delta * speed_multiplier)
+	set_linear_velocity(direction_direction.normalized() * SPEED * delta)
 
 
 func player_sprite_face_forward():
 	if previous_position != global_position:
-		$Sprite2D.look_at(Tools.vector_direction(previous_position, global_position))
+		$PlayerSprite.look_at(Tools.vector_direction(previous_position, global_position))
 
 
 func shoot_in_mouse_direction():
@@ -58,13 +59,24 @@ func set_previous_position():
 	previous_position = global_position
 
 
-func _on_timer_timeout():
-	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		var new_instance = projectile_scene.instantiate()
-		new_instance.global_position = $ProjectileSpawn/ProjectileSpawnPoint.global_position
-		# Sets projectiles as children of root node
-		$"..".add_child(new_instance)
-
-
 func _on_area_2d_body_entered(body):
-	print('Player collided with ', body.get_meta("Type"))
+	if player_immunity:
+		return
+		
+	if body.get_meta("Type") == "Enemy":
+		print('Player collided with ', body.get_meta("Type"))
+
+
+func _on_shooting_timer_timeout():
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		return
+		
+	var new_instance = projectile_scene.instantiate()
+	new_instance.global_position = $ProjectileSpawn/ProjectileSpawnPoint.global_position
+	# Sets projectiles as children of root node
+	$"..".add_child(new_instance)
+
+
+func _on_spawn_immunity_timer_timeout():
+	player_immunity = false
+	$PlayerSprite/ImmunitySprite.hide()
