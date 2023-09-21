@@ -1,22 +1,28 @@
 extends RigidBody2D
 
-var speed: float = 300.0
-var stoppingDistance: float = 35
-var targetDirection: Vector2
-
-func _ready():
-	pass
+var enemy_size: Vector2 = Vector2(3,3)
+var speed: float = 1.0
+var target_position: Vector2
+var player:Node
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
+	find_player()
+	chase_player()
+	print(player.global_position,target_position)
 
-	targetDirection = get_global_mouse_position()
 
-	if position.distance_to(targetDirection) > stoppingDistance:
-		look_at(targetDirection)
+func find_player():
+	if player == null:
+		player = get_node("../Player")
 
-		# Calculate the direction vector towards the target
-		direction = (targetDirection - position).normalized()
 
+func chase_player():
+	if player != null:
+		target_position = player.global_position
+		
+	var direction = Tools.vector_direction(global_position, target_position)
+	
 	# Calculate the velocity by multiplying the direction vector by the speed
 	linear_velocity = direction * speed
+	print(linear_velocity)

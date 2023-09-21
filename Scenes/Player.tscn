@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cfxe2aaigorpf"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_rb7ic"]
-[ext_resource type="Texture2D" uid="uid://c6yawqmuniw5u" path="res://Sprites/Ship.png" id="2_7rvgm"]
-[ext_resource type="Texture2D" uid="uid://rb38iu0usem3" path="res://Sprites/Shield.png" id="3_rsvne"]
+[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_t32w2"]
+[ext_resource type="Texture2D" uid="uid://c6yawqmuniw5u" path="res://Sprites/Ship.png" id="2_k0hp2"]
+[ext_resource type="Texture2D" uid="uid://rb38iu0usem3" path="res://Sprites/Shield.png" id="3_2b8ci"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_66qug"]
 friction = 0.0
@@ -14,10 +14,10 @@ radius = 53.6323
 radius = 12.1161
 
 [node name="Player" type="RigidBody2D"]
-position = Vector2(550, 300)
+position = Vector2(2.08165e-12, 2.08165e-12)
 physics_material_override = SubResource("PhysicsMaterial_66qug")
 lock_rotation = true
-script = ExtResource("1_rb7ic")
+script = ExtResource("1_t32w2")
 metadata/Type = "Player"
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -40,13 +40,13 @@ position = Vector2(80, 0)
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_7rvgm")
+texture = ExtResource("2_k0hp2")
 
 [node name="ImmunitySprite" type="Sprite2D" parent="PlayerSprite"]
 self_modulate = Color(0, 0.192157, 0.258824, 0.47451)
 position = Vector2(-16.54, 0)
 scale = Vector2(1.2, 1.2)
-texture = ExtResource("3_rsvne")
+texture = ExtResource("3_2b8ci")
 
 [node name="ShootingTimer" type="Timer" parent="."]
 process_callback = 0

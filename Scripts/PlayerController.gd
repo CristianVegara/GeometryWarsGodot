@@ -7,7 +7,7 @@ var projectile_scene: PackedScene
 var player_immunity: bool = true
 
 func _ready():
-	projectile_scene = preload("res://Prefabs/Projectile.tscn")
+	projectile_scene = preload("res://Scenes/Projectile.tscn")
 	set_previous_position()
 
 
