@@ -32,12 +32,17 @@ func spawn_enemy():
 	var instance = enemy_scene.instantiate()
 	instance.scale = instance.enemy_size
 	
-	#TODO generar coordenadas spawnrandom
+	#TODO limpiarlo
 	var enemy_spawn_area = $PlayArea/CollisionShape2D as CollisionShape2D
-	var area_shape = enemy_spawn_area as ConvexPolygonShape2D
-	var vertices = area_shape.get_shape().get_points()
-
-	var random_x = randf() * 0
+	var bottom_right_vertex = Vector2(enemy_spawn_area.get_shape().size.x,enemy_spawn_area.get_shape().size.y)
+	var top_left_vertex = enemy_spawn_area.global_position - (bottom_right_vertex - enemy_spawn_area.global_position)
+	
+	var random_x = randi() % int( bottom_right_vertex.x - top_left_vertex.x ) + 1 + top_left_vertex.x
+	var random_y =  randi() % int( bottom_right_vertex.y - top_left_vertex.y ) + 1 + top_left_vertex.y
+	
+	var random_pos = Vector2(random_x, random_y)
+	instance.global_position = random_pos
+	
 	add_child(instance)
 
 

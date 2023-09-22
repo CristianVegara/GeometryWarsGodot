@@ -9,8 +9,8 @@ size = Vector2(3040, 33.875)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vtj6x"]
 size = Vector2(27.875, 2043)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lk758"]
-size = Vector2(2924, 1900)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prd8x"]
+size = Vector2(2865, 1833)
 
 [node name="Level" type="Node"]
 script = ExtResource("1_0c8ap")
@@ -81,8 +81,8 @@ autostart = true
 [node name="PlayArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayArea"]
-position = Vector2(1500, 970)
-shape = SubResource("RectangleShape2D_lk758")
+position = Vector2(1497.5, 965.5)
+shape = SubResource("RectangleShape2D_prd8x")
 
 [connection signal="timeout" from="PlayerSpawnTimer" to="." method="_on_player_spawn_timer_timeout"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
