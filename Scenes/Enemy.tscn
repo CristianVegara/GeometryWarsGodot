@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubgut"]
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemie"]]
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_kkijs")
 

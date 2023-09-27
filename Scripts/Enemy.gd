@@ -22,4 +22,3 @@ func chase_player():
 		var target_position = (player_position - position).normalized()
 		move_and_collide(target_position * speed)
 		look_at(player_position)
-	
