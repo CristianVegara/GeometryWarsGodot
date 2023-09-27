@@ -30,7 +30,6 @@ func spawn_player():
 
 func spawn_enemy():
 	var instance = enemy_scene.instantiate()
-	instance.scale = instance.enemy_size
 	
 	#TODO limpiarlo
 	var enemy_spawn_area = $PlayArea/CollisionShape2D as CollisionShape2D
@@ -44,6 +43,7 @@ func spawn_enemy():
 	instance.global_position = random_pos
 	
 	add_child(instance)
+	
 
 
 func _on_player_spawn_timer_timeout():

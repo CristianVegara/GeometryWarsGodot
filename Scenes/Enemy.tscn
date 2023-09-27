@@ -5,9 +5,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubgut"]
 
-[node name="Enemy" type="RigidBody2D"]
+[node name="Enemy" type="CharacterBody2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
-lock_rotation = true
 script = ExtResource("1_kkijs")
 
 [node name="Area2D" type="Area2D" parent="."]

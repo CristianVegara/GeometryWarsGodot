@@ -22,7 +22,7 @@ func _process(delta):
 	player_movement(direction, delta)
 	# Rotate sprite to face movement direction
 	player_sprite_face_forward()
-
+	
 	set_previous_position()
 
 
