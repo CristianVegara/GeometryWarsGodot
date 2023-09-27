@@ -42,6 +42,9 @@ func spawn_enemy():
 	var random_pos = Vector2(random_x, random_y)
 	instance.global_position = random_pos
 	
+	#escalado enemigo cuando spawnean
+	instance.global_scale = Vector2(3,3)
+	
 	add_child(instance)
 	
 
