@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 var speed: float = 10.0
+var enemy_scale: Vector2 = Vector2(3, 3)
+
 var player:Node
 var player_position
 

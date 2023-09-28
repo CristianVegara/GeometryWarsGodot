@@ -31,19 +31,22 @@ func spawn_player():
 func spawn_enemy():
 	var instance = enemy_scene.instantiate()
 	
-	#TODO limpiarlo
 	var enemy_spawn_area = $PlayArea/CollisionShape2D as CollisionShape2D
-	var bottom_right_vertex = Vector2(enemy_spawn_area.get_shape().size.x,enemy_spawn_area.get_shape().size.y)
-	var top_left_vertex = enemy_spawn_area.global_position - (bottom_right_vertex - enemy_spawn_area.global_position)
 	
-	var random_x = randi() % int( bottom_right_vertex.x - top_left_vertex.x ) + 1 + top_left_vertex.x
-	var random_y =  randi() % int( bottom_right_vertex.y - top_left_vertex.y ) + 1 + top_left_vertex.y
+	# Calculates the global position of the bottom right vertex for the spawnable area
+	var enemy_spawn_x = enemy_spawn_area.get_shape().size.x
+	var enemy_spawn_y = enemy_spawn_area.get_shape().size.y
+	var bottom_right_vertex = Vector2(enemy_spawn_x, enemy_spawn_y)
 	
-	var random_pos = Vector2(random_x, random_y)
-	instance.global_position = random_pos
+	# Calculates the global position of the top left vertex for the spawnable area
+	var enemy_spawn_area_pos = enemy_spawn_area.global_position
+	var top_left_vertex = enemy_spawn_area_pos - (bottom_right_vertex - enemy_spawn_area_pos)
 	
-	#escalado enemigo cuando spawnean
-	instance.global_scale = Vector2(3,3)
+	# Returns a random Vector2 within the minimum and maxium especified.
+	instance.global_position = Tools.random_vector2(top_left_vertex, bottom_right_vertex)
+	
+	# Sets enemy scale before adding to the tree
+	instance.global_scale = instance.enemy_scale
 	
 	add_child(instance)
 
