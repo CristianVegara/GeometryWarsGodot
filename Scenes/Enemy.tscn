@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubgut"]
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemie"]]
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_kkijs")
 
@@ -23,3 +23,5 @@ shape = SubResource("RectangleShape2D_ubgut")
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_es0uy")
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

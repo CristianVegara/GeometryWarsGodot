@@ -13,7 +13,7 @@ radius = 53.6323
 [sub_resource type="CircleShape2D" id="CircleShape2D_sax5f"]
 radius = 12.1161
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" groups=["player"]]
 position = Vector2(2.08165e-12, 2.08165e-12)
 physics_material_override = SubResource("PhysicsMaterial_66qug")
 lock_rotation = true

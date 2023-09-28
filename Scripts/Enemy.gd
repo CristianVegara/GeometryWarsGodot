@@ -21,4 +21,10 @@ func chase_player():
 		player_position = player.position
 		var target_position = (player_position - position).normalized()
 		move_and_collide(target_position * speed)
-		look_at(player_position)
+
+
+
+func _on_area_2d_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
+	if _body.is_in_group("player"):
+		_body.queue_free()
+		queue_free()

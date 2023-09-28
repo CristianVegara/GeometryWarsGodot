@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_chlvh"]
 
-[node name="Projectile" type="RigidBody2D"]
+[node name="Projectile" type="RigidBody2D" groups=["bullet"]]
 script = ExtResource("1_gn3k8")
 
 [node name="Area2D" type="Area2D" parent="."]

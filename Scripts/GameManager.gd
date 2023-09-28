@@ -46,7 +46,6 @@ func spawn_enemy():
 	instance.global_scale = Vector2(3,3)
 	
 	add_child(instance)
-	
 
 
 func _on_player_spawn_timer_timeout():
