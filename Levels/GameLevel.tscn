@@ -15,7 +15,7 @@ size = Vector2(2865, 1833)
 [node name="Level" type="Node"]
 script = ExtResource("1_0c8ap")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.301961)
 position = Vector2(1514, 964)
 scale = Vector2(15, 15)
@@ -70,15 +70,15 @@ offset_right = 14.0
 offset_bottom = 1027.0
 metadata/_edit_use_anchors_ = true
 
-[node name="PlayArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayArea"]
-position = Vector2(1497.5, 965.5)
-shape = SubResource("RectangleShape2D_prd8x")
-
 [node name="PlayerSpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="PlayArea" type="Area2D" parent="PlayerSpawnTimer"]
+
+[node name="PlayAreaCollisionShape2D" type="CollisionShape2D" parent="PlayerSpawnTimer/PlayArea"]
+position = Vector2(1497.5, 965.5)
+shape = SubResource("RectangleShape2D_prd8x")
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 2.0

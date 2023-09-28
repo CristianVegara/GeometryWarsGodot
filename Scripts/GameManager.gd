@@ -4,8 +4,6 @@ extends Node
 var player_scene = preload("res://Scenes/Player.tscn")
 var enemy_scene = preload("res://Scenes/Enemy.tscn")
 
-#buscar coordenada random menos encima del jugadorx
-#aplicar escala enemigo
 func _ready():
 	# Fixes blur player sprite on high refresh monitors
 	Engine.max_fps = 60
@@ -14,7 +12,7 @@ func _ready():
 
 func _process(_delta):
 	check_player_exists()
-	
+
 
 func check_player_exists():
 	if has_node("Player"):
