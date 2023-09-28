@@ -1,6 +1,8 @@
 extends Node
 
 
+var player_lifes = 3
+
 var player_scene = preload("res://Scenes/Player.tscn")
 var enemy_scene = preload("res://Scenes/Enemy.tscn")
 
@@ -12,6 +14,8 @@ func _ready():
 
 func _process(_delta):
 	check_player_exists()
+	if player_lifes <= 0:
+		print("GameOver")
 
 
 func check_player_exists():
@@ -29,7 +33,7 @@ func spawn_player():
 func spawn_enemy():
 	var instance = enemy_scene.instantiate()
 	
-	var enemy_spawn_area = $PlayArea/CollisionShape2D as CollisionShape2D
+	var enemy_spawn_area = $PlayArea/PlayAreaCollisionShape2D as CollisionShape2D
 	
 	# Calculates the global position of the bottom right vertex for the spawnable area
 	var enemy_spawn_x = enemy_spawn_area.get_shape().size.x
@@ -50,7 +54,8 @@ func spawn_enemy():
 
 
 func _on_player_spawn_timer_timeout():
-	spawn_player()
+	if player_lifes > 0:
+		spawn_player()
 
 
 func _on_enemy_spawn_timer_timeout():

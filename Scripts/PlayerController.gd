@@ -62,9 +62,10 @@ func set_previous_position():
 func _on_area_2d_body_entered(body):
 	if player_immunity:
 		return
-		
-	if body.get_meta("Type") == "Enemy":
-		print('Player collided with ', body.get_meta("Type"))
+	# Kills player on collision with enemy
+	if body.is_in_group("enemies"):
+		$"..".player_lifes -= 1
+		queue_free()
 
 
 func _on_shooting_timer_timeout():
