@@ -1,5 +1,6 @@
 class_name Tools
 
+
 ## Return a Vector2 of the forward trajectory. Must be .normalized()
 ## to be used as direction, otherwise it will return a Vector2 position.
 static func vector_direction( a:Vector2, b:Vector2 ):

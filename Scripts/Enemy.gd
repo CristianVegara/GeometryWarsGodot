@@ -1,22 +1,30 @@
-extends RigidBody2D
+extends CharacterBody2D
 
-var speed: float = 300.0
-var stoppingDistance: float = 35
-var targetDirection: Vector2
+var speed: float = 10.0
+var player:Node
+var player_position
 
-func _ready():
-	pass
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
+	find_player()
+	chase_player()
 
-	targetDirection = get_global_mouse_position()
 
-	if position.distance_to(targetDirection) > stoppingDistance:
-		look_at(targetDirection)
+func find_player():
+	if player == null:
+		player = get_node("../Player")
 
-		# Calculate the direction vector towards the target
-		direction = (targetDirection - position).normalized()
 
-	# Calculate the velocity by multiplying the direction vector by the speed
-	linear_velocity = direction * speed
+func chase_player():
+	if player != null:
+		player_position = player.position
+		var target_position = (player_position - position).normalized()
+		move_and_collide(target_position * speed)
+
+
+
+func _on_area_2d_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
+	if _body.is_in_group("player"):
+		_body.queue_free()
+		queue_free()

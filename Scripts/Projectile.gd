@@ -2,6 +2,8 @@ extends RigidBody2D
 
 var target_direction: Vector2
 var speed = 700
+var enemy: Node
+
 
 func _ready():
 	# Calculates the direction in which bullets will look at taking the opposite direction from spawn to center
@@ -24,4 +26,7 @@ func _on_timer_timeout():
 
 # Despawns bullet after it has collided with anything
 func _on_area_2d_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
+	if _body.is_in_group("enemies"):
+		_body.queue_free()
 	queue_free()
+

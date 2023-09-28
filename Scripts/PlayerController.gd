@@ -7,7 +7,7 @@ var projectile_scene: PackedScene
 var player_immunity: bool = true
 
 func _ready():
-	projectile_scene = preload("res://Prefabs/Projectile.tscn")
+	projectile_scene = preload("res://Scenes/Projectile.tscn")
 	set_previous_position()
 
 
@@ -22,7 +22,7 @@ func _process(delta):
 	player_movement(direction, delta)
 	# Rotate sprite to face movement direction
 	player_sprite_face_forward()
-
+	
 	set_previous_position()
 
 
