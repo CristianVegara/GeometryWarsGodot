@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bo6oeg004usqn"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_kkijs"]
-[ext_resource type="Texture2D" uid="uid://bsgg0ssglk8nt" path="res://Sprites/enemy.png" id="2_es0uy"]
+[ext_resource type="Texture2D" uid="uid://cdyjvr3ebivla" path="res://Sprites/Enemy_2.png" id="2_r0685"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubgut"]
 
@@ -13,15 +13,16 @@ script = ExtResource("1_kkijs")
 
 [node name="EnemyArea2DCollisionShapeD2" type="CollisionShape2D" parent="EnemyArea2D"]
 rotation = 0.785398
-scale = Vector2(1.1, 1.1)
+scale = Vector2(3.8, 3.8)
 shape = SubResource("RectangleShape2D_ubgut")
 
 [node name="EnemyCollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 0.785398
-scale = Vector2(1.2, 1.2)
+scale = Vector2(3.2, 3.2)
 shape = SubResource("RectangleShape2D_ubgut")
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_es0uy")
+scale = Vector2(0.73, 0.73)
+texture = ExtResource("2_r0685")
 
 [connection signal="body_shape_entered" from="EnemyArea2D" to="." method="_on_area_2d_body_shape_entered"]
