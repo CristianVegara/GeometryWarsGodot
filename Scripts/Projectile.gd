@@ -6,7 +6,6 @@ var speed = 1200
 var enemy: Node
 var relative_speed: Vector2
 
-
 func _ready():
 	# Calculates the direction in which bullets will look at taking the opposite direction from spawn to center
 	var b_pos = $".."/Player/ProjectileSpawn/ProjectileSpawnPoint.global_position
@@ -24,11 +23,3 @@ func _ready():
 # Despawns bullet after some time in case it hasn't collided with anything
 func _on_timer_timeout():
 	queue_free()
-
-
-# Despawns bullet after it has collided with anything
-func _on_area_2d_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
-	if _body.is_in_group("enemies"):
-		_body.queue_free()
-	queue_free()
-

@@ -10,7 +10,7 @@ var player_immunity: bool = true
 
 
 func _ready():
-	projectile_scene = preload("res://Scenes/Projectile.tscn")
+	projectile_scene = preload("res://Scenes/Bullet_1.tscn")
 	set_previous_position()
 
 
