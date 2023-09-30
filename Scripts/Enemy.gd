@@ -2,20 +2,19 @@ extends CharacterBody2D
 
 
 var speed: float = 10.0
-var enemy_scale: Vector2 = Vector2(3, 3)
+var enemy_scale: Vector2 = Vector2(1, 1)
 
 var player: Node
 var player_position: Vector2
 
 
-func _physics_process(delta):
-	var direction = Vector2.ZERO
+func _physics_process(_delta):
 	find_player()
 	chase_player()
 
 
 func find_player():
-	if player == null:
+	if player == null && $"../".has_node("Player"):
 		player = get_node("../Player")
 
 
