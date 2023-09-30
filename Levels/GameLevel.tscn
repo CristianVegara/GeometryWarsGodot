@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3tenkt8vcyav"]
+
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_0c8ap"]
+[ext_resource type="Texture2D" uid="uid://b5dtyquqcdeit" path="res://Sprites/icon.svg" id="2_1sv3q"]
+[ext_resource type="PackedScene" uid="uid://byld1p3c4tyon" path="res://Scenes/GameUI.tscn" id="3_axa0b"]
+[ext_resource type="Script" path="res://Scenes/CameraController.gd" id="4_sldnp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrngr"]
+size = Vector2(3040, 33.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtj6x"]
+size = Vector2(27.875, 2043)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prd8x"]
+size = Vector2(2865, 1833)
+
+[node name="Level" type="Node"]
+script = ExtResource("1_0c8ap")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.301961)
+position = Vector2(1514, 964)
+scale = Vector2(15, 15)
+texture = ExtResource("2_1sv3q")
+
+[node name="BoundaryLimits" type="StaticBody2D" parent="."]
+position = Vector2(958, 686)
+metadata/Type = "Barrier"
+
+[node name="Top" type="CollisionShape2D" parent="BoundaryLimits"]
+position = Vector2(538, -725.062)
+shape = SubResource("RectangleShape2D_lrngr")
+
+[node name="ColorRect" type="ColorRect" parent="BoundaryLimits/Top"]
+offset_left = -1520.0
+offset_top = -17.0
+offset_right = 1520.0
+offset_bottom = 17.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Bottom" type="CollisionShape2D" parent="BoundaryLimits"]
+position = Vector2(538, 1284)
+shape = SubResource("RectangleShape2D_lrngr")
+
+[node name="ColorRect" type="ColorRect" parent="BoundaryLimits/Bottom"]
+offset_left = -1520.0
+offset_top = -17.0
+offset_right = 1520.0
+offset_bottom = 17.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Right" type="CollisionShape2D" parent="BoundaryLimits"]
+position = Vector2(2071.94, 279.5)
+shape = SubResource("RectangleShape2D_vtj6x")
+
+[node name="ColorRect" type="ColorRect" parent="BoundaryLimits/Right"]
+offset_left = -14.0
+offset_top = -1021.0
+offset_right = 14.0
+offset_bottom = 1027.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Left" type="CollisionShape2D" parent="BoundaryLimits"]
+position = Vector2(-996, 279.5)
+shape = SubResource("RectangleShape2D_vtj6x")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="ColorRect" type="ColorRect" parent="BoundaryLimits/Left"]
+offset_left = -14.0
+offset_top = -1021.0
+offset_right = 14.0
+offset_bottom = 1027.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayArea" type="Area2D" parent="."]
+
+[node name="PlayAreaCollisionShape2D" type="CollisionShape2D" parent="PlayArea"]
+position = Vector2(1497.5, 965.5)
+shape = SubResource("RectangleShape2D_prd8x")
+
+[node name="PlayerSpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="GameUI" parent="." instance=ExtResource("3_axa0b")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+texture_filter = 1
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+position_smoothing_speed = 15.0
+script = ExtResource("4_sldnp")
+
+[connection signal="timeout" from="PlayerSpawnTimer" to="." method="_on_player_spawn_timer_timeout"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3tenkt8vcyav"]
+
+[ext_resource type="Texture2D" uid="uid://b5dtyquqcdeit" path="res://Sprites/icon.svg" id="1_oj88y"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_vxnds"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrngr"]
+size = Vector2(3040, 33.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtj6x"]
+size = Vector2(27.875, 2043)
+
+[node name="Level" type="Node"]
+script = ExtResource("1_vxnds")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.301961)
+position = Vector2(556, 278)
+scale = Vector2(15, 15)
+texture = ExtResource("1_oj88y")
+
+[node name="BoundaryLimits" type="StaticBody2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="BoundaryLimits"]
+position = Vector2(538, -725.062)
+shape = SubResource("RectangleShape2D_lrngr")
+
+[node name="ColorRect" type="ColorRect" parent="BoundaryLimits/Top"]
+offset_left = -1520.0
+offset_top = -17.0
+offset_right = 1520.0
+offset_bottom = 17.0
+
+[node name="Bottom" type="CollisionShape2D" parent="BoundaryLimits"]
+position = Vector2(538, 1284)
+shape = SubResource("RectangleShape2D_lrngr")
+
+[node name="ColorRect" type="ColorRect" parent="BoundaryLimits/Bottom"]
+offset_left = -1520.0
+offset_top = -17.0
+offset_right = 1520.0
+offset_bottom = 17.0
+
+[node name="Right" type="CollisionShape2D" parent="BoundaryLimits"]
+position = Vector2(2071.94, 279.5)
+shape = SubResource("RectangleShape2D_vtj6x")
+
+[node name="ColorRect" type="ColorRect" parent="BoundaryLimits/Right"]
+offset_left = -14.0
+offset_top = -1021.0
+offset_right = 14.0
+offset_bottom = 1027.0
+
+[node name="Left" type="CollisionShape2D" parent="BoundaryLimits"]
+position = Vector2(-996, 279.5)
+shape = SubResource("RectangleShape2D_vtj6x")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="ColorRect" type="ColorRect" parent="BoundaryLimits/Left"]
+offset_left = -14.0
+offset_top = -1021.0
+offset_right = 14.0
+offset_bottom = 1027.0
+
+[node name="PlayerSpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
