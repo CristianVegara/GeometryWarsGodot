@@ -1,8 +1,10 @@
 extends RigidBody2D
 
+
 var target_direction: Vector2
-var speed = 700
+var speed = 1200
 var enemy: Node
+var relative_speed: Vector2
 
 
 func _ready():
@@ -16,7 +18,7 @@ func _ready():
 	var direction = (target_direction - position).normalized()
 
 	# Calculate the velocity by multiplying the direction vector by the speed
-	linear_velocity = direction * speed
+	linear_velocity = (direction * speed) + relative_speed
 
 
 # Despawns bullet after some time in case it hasn't collided with anything
