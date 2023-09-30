@@ -1,10 +1,13 @@
 extends RigidBody2D
 
-const SPEED = 45000
+
+const SPEED = 40
+var speed_scale = 1000
 var direction = Vector2.ZERO
 var previous_position: Vector2
 var projectile_scene: PackedScene
 var player_immunity: bool = true
+
 
 func _ready():
 	projectile_scene = preload("res://Scenes/Projectile.tscn")
@@ -12,7 +15,7 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_key_pressed(KEY_1):
+	if Input.is_key_pressed(KEY_1): 
 		queue_free()
 	# Rotate player
 	shoot_in_mouse_direction()
@@ -42,7 +45,7 @@ func key_detection():
 
 
 func player_movement(direction_direction, delta):
-	set_linear_velocity(direction_direction.normalized() * SPEED * delta)
+	set_linear_velocity((direction_direction.normalized() * SPEED * delta) * speed_scale) 
 
 
 func player_sprite_face_forward():
@@ -73,6 +76,7 @@ func _on_shooting_timer_timeout():
 		return
 		
 	var new_instance = projectile_scene.instantiate()
+	new_instance.relative_speed = linear_velocity
 	new_instance.global_position = $ProjectileSpawn/ProjectileSpawnPoint.global_position
 	# Sets projectiles as children of root node
 	$"..".add_child(new_instance)
