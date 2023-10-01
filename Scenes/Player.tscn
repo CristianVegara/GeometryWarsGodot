@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0y01fdmm2t16"]
+[gd_scene load_steps=9 format=3 uid="uid://c0y01fdmm2t16"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_t32w2"]
 [ext_resource type="Texture2D" uid="uid://c6yawqmuniw5u" path="res://Sprites/Ship.png" id="2_k0hp2"]
 [ext_resource type="Texture2D" uid="uid://rb38iu0usem3" path="res://Sprites/Shield.png" id="3_2b8ci"]
+[ext_resource type="Script" path="res://Scripts/Crosshair.gd" id="4_htfh6"]
+[ext_resource type="Texture2D" uid="uid://djpwx22vix6vk" path="res://Sprites/Crosshair.png" id="5_o0you"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_66qug"]
 friction = 0.0
@@ -33,7 +35,7 @@ shape = SubResource("CircleShape2D_sax5f")
 [node name="ProjectileSpawn" type="Node2D" parent="."]
 
 [node name="ProjectileSpawnPoint" type="Node2D" parent="ProjectileSpawn"]
-position = Vector2(80, 0)
+position = Vector2(39, 0)
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -53,6 +55,15 @@ autostart = true
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="CrosshairNode2D" type="Node2D" parent="."]
+script = ExtResource("4_htfh6")
+
+[node name="CrosshairSprite2D" type="Sprite2D" parent="CrosshairNode2D"]
+texture_filter = 1
+position = Vector2(86, 0)
+scale = Vector2(0.73, 0.73)
+texture = ExtResource("5_o0you")
 
 [connection signal="body_entered" from="PlayerArea2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]
