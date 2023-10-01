@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var speed: float = 10.0
+var speed: float = 6.0
 var enemy_scale: Vector2 = Vector2(1, 1)
 
 var player: Node
@@ -26,6 +26,7 @@ func chase_player():
 
 
 func _on_area_2d_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
-	if _body.is_in_group("player"):
-		_body.queue_free()
-		queue_free()
+	pass
+#	if _body.is_in_group("player"):
+#		_body.queue_free()
+#		queue_free()

@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 
-const SPEED = 40
+const SPEED = 43
 var speed_scale = 1000
 var direction = Vector2.ZERO
 var previous_position: Vector2
