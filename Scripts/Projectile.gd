@@ -18,8 +18,3 @@ func _ready():
 
 	# Calculate the velocity by multiplying the direction vector by the speed
 	linear_velocity = (direction * speed) + relative_speed
-
-
-# Despawns bullet after some time in case it hasn't collided with anything
-func _on_timer_timeout():
-	queue_free()

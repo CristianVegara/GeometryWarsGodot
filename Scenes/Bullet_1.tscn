@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://2fp6naoewwvb"]
+[gd_scene load_steps=4 format=3 uid="uid://2fp6naoewwvb"]
 
 [ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_fypnu"]
 [ext_resource type="PackedScene" uid="uid://7enqsvxubne" path="res://Scenes/Components/ProjectileSpriteAndCollision.tscn" id="2_xbe01"]
+[ext_resource type="PackedScene" uid="uid://cjap7nl1jjpru" path="res://Scenes/Components/DespawnTimer.tscn" id="3_2pl3y"]
 
 [node name="Bullet_1" type="RigidBody2D" groups=["bullet"]]
 script = ExtResource("1_fypnu")
@@ -12,8 +13,5 @@ position = Vector2(0, -15)
 [node name="ProjectileSpriteAndCollision2" parent="." instance=ExtResource("2_xbe01")]
 position = Vector2(0, 15)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 6.0
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="DespawnTimer" parent="." instance=ExtResource("3_2pl3y")]
+wait_time = 10.0
