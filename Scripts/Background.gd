@@ -6,7 +6,7 @@ var background_sprite: Sprite2D
 
 func _ready():
 	background_sprite = $Background
-	var offset = 93
+	var offset = 128
 	var y_pos = 0
 	for y in range(44):
 		for x in range(44):

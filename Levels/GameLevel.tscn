@@ -30,7 +30,6 @@ color = Color(0.00392157, 0.00392157, 0.00392157, 1)
 
 [node name="Background" type="Sprite2D" parent="BackgroundSprites"]
 modulate = Color(1, 1, 1, 0.537255)
-scale = Vector2(0.73, 0.73)
 texture = ExtResource("5_peom7")
 
 [node name="BoundaryLimits" type="StaticBody2D" parent="."]
