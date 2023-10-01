@@ -87,6 +87,8 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(1497.5, 965.5)
 shape = SubResource("RectangleShape2D_prd8x")
 
+[node name="PlayerSpawnedProjectiles" type="Node" parent="."]
+
 [node name="PlayerSpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true

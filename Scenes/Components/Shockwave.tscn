@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkl4sv1vb1ffh"]
+
+[ext_resource type="Script" path="res://Scripts/Component scripts/Shockwave.gd" id="1_nb0s6"]
+[ext_resource type="Texture2D" uid="uid://rb38iu0usem3" path="res://Sprites/Shield.png" id="2_cwoi6"]
+[ext_resource type="PackedScene" uid="uid://cjap7nl1jjpru" path="res://Scenes/Components/DespawnTimer.tscn" id="2_rxwmh"]
+
+[node name="Shockwave" type="Node2D"]
+script = ExtResource("1_nb0s6")
+
+[node name="ShockwaveArea2D" type="Area2D" parent="."]
+scale = Vector2(0.1, 0.1)
+
+[node name="ShockwaveSprite2D" type="Sprite2D" parent="ShockwaveArea2D"]
+texture_filter = 1
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("2_cwoi6")
+
+[node name="ShockwaveCollisionPolygon2D" type="CollisionPolygon2D" parent="ShockwaveArea2D"]
+polygon = PackedVector2Array(-1.23267, -8.01233, 1.23267, -8.01233, 4.6225, -6.77966, 7.08783, -4.00616, 8.32049, -1.23267, 8.32049, 0.924499, 7.39599, 3.698, 6.16333, 5.547, 4.6225, 6.77966, 1.23267, 8.01233, -1.23267, 8.01233, -4.31433, 7.08783, -7.08783, 4.31433, -8.01233, 1.54083, -8.01233, -1.23267, -7.08783, -4.00616, -4.6225, -6.77966, -1.23267, -8.01233, -1.54083, -9.86133, -5.547, -8.32049, -7.08783, -6.77966, -8.62866, -4.93066, -9.86133, -1.849, -9.86133, 1.54083, -8.62866, 5.23883, -5.547, 8.32049, -1.54083, 9.86133, 1.54083, 9.55316, 5.23883, 8.62866, 7.39599, 6.47149, 8.62866, 4.6225, 9.86133, 1.23267, 9.86133, -1.23267, 8.93683, -4.6225, 5.85516, -8.01233, 1.54083, -9.86133, -1.54083, -9.86133)
+
+[node name="DespawnTimer" parent="." instance=ExtResource("2_rxwmh")]
+wait_time = 2.0
+
+[connection signal="body_shape_entered" from="ShockwaveArea2D" to="." method="_on_shockwave_area_2d_body_shape_entered"]

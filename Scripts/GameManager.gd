@@ -14,7 +14,7 @@ func _ready():
 	# Fixes blur player sprite on high refresh monitors
 	Engine.max_fps = 60
 	# Hides mouse inside game within window
-	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+#	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	
 	calculate_spawn_area_size()
 	spawn_player()

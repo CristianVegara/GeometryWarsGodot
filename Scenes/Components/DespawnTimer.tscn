@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjap7nl1jjpru"]
+
+[ext_resource type="Script" path="res://Scripts/Component scripts/DespawnTimer.gd" id="1_34113"]
+
+[node name="DespawnTimer" type="Timer"]
+wait_time = 3.0
+autostart = true
+script = ExtResource("1_34113")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

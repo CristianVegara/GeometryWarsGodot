@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e6jwniwg37pd"
-path="res://.godot/imported/ShipBnW.png-301661f22323741b26c27bf0638419ef.ctex"
+uid="uid://cxhhyr1b0fehs"
+path="res://.godot/imported/ShockwaveIcon.png-c82d99f552bf7c8f0558d373be87f074.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ShipBnW.png"
-dest_files=["res://.godot/imported/ShipBnW.png-301661f22323741b26c27bf0638419ef.ctex"]
+source_file="res://Sprites/ShockwaveIcon.png"
+dest_files=["res://.godot/imported/ShockwaveIcon.png-c82d99f552bf7c8f0558d373be87f074.ctex"]
 
 [params]
 
